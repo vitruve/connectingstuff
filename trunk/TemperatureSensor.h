@@ -22,6 +22,8 @@
 #ifndef TemperatureSensor_h
 #define TemperatureSensor_h
 
+#ifdef ONEWIRE
+
 #include "Arduino.h"
 #include "Sensor.h"
 #include "Kernel.h"
@@ -47,4 +49,5 @@ class TemperatureSensor : public Sensor
 		void Update(float);
 };
 
+#endif
 #endif

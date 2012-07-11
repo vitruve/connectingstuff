@@ -22,6 +22,8 @@
 #ifndef OnewireManager_h
 #define OnewireManager_h
 
+#ifdef ONEWIRE
+
 #include "Arduino.h"
 #include "Kernel.h"
 #include "Timer.h"
@@ -57,4 +59,5 @@ class OnewireManager
 		void Update();
 };
 
+#endif
 #endif

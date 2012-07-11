@@ -156,9 +156,9 @@ void Switch::Update()
 
 				for(uint8_t i = 0; i < m_iAttachedModuleIndex; i++)
 				{
-					Serial.print(m_iNbClic);
-					Serial.print(",");
-					Serial.println(m_oAttachedModule[i].nbClic);
+					//Serial.print(m_iNbClic);
+					//Serial.print(",");
+					//Serial.println(m_oAttachedModule[i].nbClic);
 
 					if(m_oAttachedModule[i].nbClic > 0 && m_iNbClic == m_oAttachedModule[i].nbClic)
 					{
@@ -218,20 +218,15 @@ void Switch::SendStatus()
 	msg.hop = 1;
 	msg.type = XPL_TRIG;
 
-	strcpy(msg.source.vendor_id, "cstuff");
-	strcpy(msg.source.device_id, "switch");
-	strcpy(msg.source.instance_id, ConnectingStuff::GetCARDNAME());
+	msg.SetTarget_P(PSTR("*"));
+	msg.SetSchema_P(PSTR("sensor"), PSTR("basic"));
 
-	strcpy(msg.target.vendor_id, "*");
-	//strcpy(msg.target.device_id, "xxx");
-	//strcpy(msg.target.instance_id, "xxx");
+	char id[20];
+	sprintf(id,"%d",m_iID);
 
-	strcpy(msg.schema.class_id, "sensor");
-	strcpy(msg.schema.type_id, "basic");
-
-	msg.AddCommand("device",m_iID);
-	msg.AddCommand("type","input");
-	msg.AddCommand("current","pulse");
+	msg.AddCommand("device",id);
+	msg.AddCommand_P(PSTR("type"),PSTR("input"));
+	msg.AddCommand_P(PSTR("current"),PSTR("pulse"));
 
 	xpl.SendMessage(&msg);
 #endif

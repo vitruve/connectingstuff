@@ -117,24 +117,20 @@ void Light::SendStatus()
 	msg.hop = 1;
 	msg.type = XPL_TRIG;
 
-	strcpy(msg.source.vendor_id, "cstuff");
-	strcpy(msg.source.device_id, "light");
-	strcpy(msg.source.instance_id, ConnectingStuff::GetCARDNAME());
+	msg.SetTarget_P(PSTR("*"));
+    msg.SetSchema_P(PSTR("lighting"), PSTR("device"));
 
-	strcpy(msg.target.vendor_id, "*");
-	//strcpy(msg.target.device_id, "xxx");
-	//strcpy(msg.target.instance_id, "xxx");
+	msg.AddCommand_P(PSTR("network"),PSTR("1"));
+	msg.AddCommand_P(PSTR("device"),PSTR("11"));
+	msg.AddCommand_P(PSTR("channel"),PSTR("1"));
 
-	strcpy(msg.schema.class_id, "lighting");
-	strcpy(msg.schema.type_id, "device");
+	char buffer[20];
+	memcpy(buffer, m_output.Read() == 0 ? "off" : "on", 3);
 
-	msg.AddCommand("network","1");
-	msg.AddCommand("device","11");
-	msg.AddCommand("channel","1");
-	char buffer[50];
-	strcpy(buffer, m_output.Read() == 0 ? "off" : "on");
 	msg.AddCommand("state",buffer);
-	msg.AddCommand("level",m_output.Read());
+
+	sprintf(buffer, "%d", m_output.Read());
+	msg.AddCommand("level",buffer);
 
 	xpl.SendMessage(&msg);
 #endif
