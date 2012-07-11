@@ -19,6 +19,8 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
+#ifdef ONEWIRE
+
 #include "TemperatureSensor.h"
 
 #ifdef XPL
@@ -129,3 +131,4 @@ void TemperatureSensor::SendStatus()
 	xpl.SendMessage(&msg);
 #endif
 }
+#endif

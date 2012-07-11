@@ -41,7 +41,7 @@ static const char* VERSION = "0.1";
 void ConnectingStuff::SetCARDID(uint8_t _id, char* _name)
 {
 	CARDID = _id ;
-	strcpy(CARDNAME, _name);
+	memcpy(CARDNAME, _name, 8);
 
 	char idStr[12];
 	itoa(_id,idStr,12);
@@ -95,12 +95,13 @@ void ConnectingStuff::Debug(int _value)
 
 void ConnectingStuff::Debug(char* _value)
 {
+#ifdef LCD
 	debugTimer = millis();
 
 	Serial.println(_value);
 	ConnectingStuff::PrintLCD(3,0,_value);
 
-#ifdef LCD
+
 	int len = strlen(_value);
 	if(len < 16)
 	{
