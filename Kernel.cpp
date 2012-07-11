@@ -2,12 +2,6 @@
  * connectingStuff, Arduino Based Home Automation
  * http://connectingstuff.net/blog/
  *
- * This code is parsing a xPL message stored in 'received' buffer
- * - isolate and store in 'line' buffer each part of the message -> detection of EOL character (DEC 10)
- * - analyse 'line', function of its number and store information in xpl_header memory
- * - check for each step if the message respect xPL protocol
- * - parse each command line
- *
  * Copyright (C) 2012 olivier.lebrun@gmail.com
  *
  * This program is free software; you can redistribute it and/or
@@ -24,7 +18,6 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
-
 #include "Kernel.h"
 
 static unsigned long debugTimer;
@@ -43,16 +36,6 @@ static const char* VERSION = "0.1";
 
 #ifdef LCD
 	LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
-#endif
-
-#ifdef XPL
-void ConnectingStuff::InitXpl(xPLSendExternal _callbackSend, xPLAfterParseAction _callbackAfter)
-{
-	xpl.SendExternal = _callbackSend;
-	xpl.AfterParseAction = _callbackAfter;
-	xpl.Begin("xpl", "arduino", "domogik");
-	xpl.hbeat_interval = 5;
-}
 #endif
 
 void ConnectingStuff::SetCARDID(uint8_t _id, char* _name)
@@ -163,7 +146,7 @@ void EthernetConf::Init(uint8_t* _mac, uint8_t* _ip, uint8_t* _gwip, uint8_t* _b
     Serial.println("Ethernet controller ready");
 }
 
-uint8_t* EthernetConf::getBroadcastAddr()
+uint8_t* EthernetConf::GetBroadcastAddr()
 {
 	return broadcastAddr;
 }

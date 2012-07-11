@@ -2,12 +2,6 @@
  * connectingStuff, Arduino Based Home Automation
  * http://connectingstuff.net/blog/
  *
- * This code is parsing a xPL message stored in 'received' buffer
- * - isolate and store in 'line' buffer each part of the message -> detection of EOL character (DEC 10)
- * - analyse 'line', function of its number and store information in xpl_header memory
- * - check for each step if the message respect xPL protocol
- * - parse each command line
- *
  * Copyright (C) 2012 olivier.lebrun@gmail.com
  *
  * This program is free software; you can redistribute it and/or
@@ -24,7 +18,6 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
-
 #ifndef Sensor_h
 #define Sensor_h
 

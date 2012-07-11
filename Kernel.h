@@ -2,12 +2,6 @@
  * connectingStuff, Arduino Based Home Automation
  * http://connectingstuff.net/blog/
  *
- * This code is parsing a xPL message stored in 'received' buffer
- * - isolate and store in 'line' buffer each part of the message -> detection of EOL character (DEC 10)
- * - analyse 'line', function of its number and store information in xpl_header memory
- * - check for each step if the message respect xPL protocol
- * - parse each command line
- *
  * Copyright (C) 2012 olivier.lebrun@gmail.com
  *
  * This program is free software; you can redistribute it and/or
@@ -31,7 +25,7 @@
 // Active/Desactive les parties du code non necessaires
 // A voir pour faire ca directement dans le sketch ... mais cela
 // semble poser problème avec l'environnement arduino
-#define LCD
+#undef LCD
 #define ETH
 #define XPL
 
@@ -65,10 +59,6 @@ class ConnectingStuff
 	static void Debug(int);
 	static void Debug(char*);
 
-#ifdef XPL
-	static void InitXpl(xPLSendExternal, xPLAfterParseAction);
-#endif
-
 	static void DebugShowTime();
 };
 
@@ -78,7 +68,7 @@ class EthernetConf
 	public:
 
 	static void Init(uint8_t*, uint8_t*, uint8_t*, uint8_t*);
-	static uint8_t* getBroadcastAddr();
+	static uint8_t* GetBroadcastAddr();
 };
 #endif
 
