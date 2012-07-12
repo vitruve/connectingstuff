@@ -47,7 +47,7 @@ void Switch::Init(int _io, char* _name, int _maxModuleToManage, int _longPressDe
 
 	m_type = SWITCH;
 	m_iID = ConnectingStuff::GetCARDID()*100 + _io;
-	strcpy(m_name, _name);
+	memcpy(m_name, _name, 16);
 
 	m_iNbClic = 0;
 	m_bLongPress = false;
@@ -120,7 +120,11 @@ void Switch::Update()
 	if(m_Input.StateChange())
 	{
 		// Un appuis sur l'interrupteur est détecté : on démarre le timer de pression
-		if(m_Input.GetState() == LOW) m_PressTimer.Reset();
+		if(m_Input.GetState() == LOW)
+		{
+			m_PressTimer.Reset();
+			m_iNbClic = 0;
+		}
 
 		// l'interrupteur vient d'etre relaché
 		else
@@ -167,7 +171,7 @@ void Switch::Update()
 				}
 			}
 
-			m_iNbClic = 0;
+			//m_iNbClic = 0;
 		}
 
 		// L'interrupteur est en position appuyé
