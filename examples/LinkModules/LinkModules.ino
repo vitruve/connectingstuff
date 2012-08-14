@@ -1,8 +1,8 @@
 #include <ConnectingStuff.h>
  
 Switch interSalon;
-Light lumiereSalon(1, 12, "Salon)
-Light lumiereSam(1, 13, "Sam");;
+Light lumiereSalon(1, 12, "Salon");
+Light lumiereSam(1, 13, "Sam");
  
 void setup()
 {
