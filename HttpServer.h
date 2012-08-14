@@ -63,10 +63,10 @@ class HttpServer
 		void AddDefaultPage(CallbackType);
 	
 		void Print(int);
-                void Println(int);
+        void Println(int);
 		void Print(char*);
 		void Println(char*);
-		void Listen(word);
+		void Listen(word = 0);
 
 		char* GetArg(char *str = NULL);
 
