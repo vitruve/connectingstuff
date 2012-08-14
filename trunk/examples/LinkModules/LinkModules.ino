@@ -1,8 +1,8 @@
 #include <ConnectingStuff.h>
  
 Switch interSalon;
-Light lumiereSalon;
-Light lumiereSam;
+Light lumiereSalon(1, 12, "Salon)
+Light lumiereSam(1, 13, "Sam");;
  
 void setup()
 {
@@ -10,8 +10,6 @@ void setup()
   ConnectingStuff::SetCARDID(1, "carte1");
  
   interSalon.Init(2, "Salon/Sam");
-  lumiereSalon.Init(1, 12, "Salon);
-  lumiereSam.Init(1, 13, "Sam");
  
   interSalon.LinkModule(&lumiereSalon, 1, 0, ONOFF);
   interSalon.LinkModule(&lumiereSalon, 0, 2000, OFF);

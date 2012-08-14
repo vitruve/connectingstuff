@@ -26,7 +26,7 @@
 // A voir pour faire ca directement dans le sketch ... mais cela
 // semble poser problème avec l'environnement arduino
 #undef LCD
-#undef ETH
+#define ETH
 #undef XPL
 #undef ONEWIRE
 

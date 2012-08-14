@@ -111,7 +111,7 @@ void AddModule(char* arg1)
     server.Print(card);
     server.Print(PSTR(" and pin "));
     server.Print(pin);
-    server.Print(PSTR(" and name ");
+    server.Print(PSTR(" and name "));
     server.Println(name);
   }
 }
