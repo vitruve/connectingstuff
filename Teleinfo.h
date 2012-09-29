@@ -18,22 +18,46 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
+#ifndef Teleinfo_h
+#define Teleinfo_h
 
-#include "Input.h"
-#include "Output.h"
-#include "HttpServer.h"
-#include "Kernel.h"
-#include "Timer.h"
-#include "Dimmer.h"
-#include "Module.h"
-#include "Light.h"
-#include "Manager.h"
-#include "1wireManager.h"
-#include "Sensor.h"
-#include "TemperatureSensor.h"
+#include "Arduino.h"
 #include "AnalogSensor.h"
-#include "Teleinfo.h"
 
-#ifdef XPL
-xPL xpl;
+class Teleinfo : public Module
+{
+	protected:
+		AnalogSensor* m_sensor;
+
+		unsigned int m_HCHP;
+		unsigned int m_IINST;
+
+		int m_sensorThreshold;
+		bool m_bTurnRecorded;
+
+		float m_fCompteurC;
+
+		Timer m_OneTurnTimer;
+
+		// A completer/Modifier pour la vraie teleinfo
+
+	public:
+		Teleinfo();
+		Teleinfo(int, char *);
+		~Teleinfo();
+
+		void Action(void*);
+		char* ToJson();
+		void SendStatus();
+
+		void Update();
+
+		void SetThreshold(int);
+		void SetHCHP(unsigned int);
+		void SetCompteurC(float);
+
+		unsigned int GetTotal();
+		unsigned int GetInst();
+};
+
 #endif
