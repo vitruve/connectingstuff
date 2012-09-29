@@ -19,6 +19,7 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
+#include "Tools.h"
 #include "Input.h"
 #include "Output.h"
 #include "HttpServer.h"
@@ -37,3 +38,5 @@
 #ifdef XPL
 xPL xpl;
 #endif
+
+

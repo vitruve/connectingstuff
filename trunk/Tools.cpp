@@ -19,44 +19,19 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-#ifndef OnewireManager_h
-#define OnewireManager_h
-
-#include "Kernel.h"
-
-#ifdef ONEWIRE
-
 #include "Arduino.h"
-#include "Timer.h"
-#include "TemperatureSensor.h"
+#include "Tools.h"
 
-#include "../OneWire/OneWire.h"
-#include "../DallasTemperature/DallasTemperature.h";
-
-#define ONE_WIRE_BUS 22
-#define TEMPERATURE_PRECISION 12
-#define GET_TEMP_TIME 60000
-
-class OnewireManager
+extern char *ftoa(char *a, double f, int precision)
 {
-	protected:
-		OneWire* oneWire;
-		DallasTemperature* sensors;
+  long p[] = {0,10,100,1000,10000,100000,1000000,10000000,100000000};
 
-		Timer m_refreshTimer;
-		uint8_t m_iNbDevice;
-
-		TemperatureSensor** m_sensorList;
-
-		void printAddress(DeviceAddress);
-
-	public:
-		OnewireManager();
-		~OnewireManager();
-
-		void Init();
-		void Update();
-};
-
-#endif
-#endif
+  char *ret = a;
+  long heiltal = (long)f;
+  itoa(heiltal, a, 10);
+  while (*a != '\0') a++;
+  *a++ = '.';
+  long desimal = abs((long)((f - heiltal) * p[precision]));
+  itoa(desimal, a, 10);
+  return ret;
+}

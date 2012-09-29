@@ -22,11 +22,12 @@
 #ifndef TemperatureSensor_h
 #define TemperatureSensor_h
 
+#include "Kernel.h"
+
 #ifdef ONEWIRE
 
 #include "Arduino.h"
 #include "Sensor.h"
-#include "Kernel.h"
 #include "../DallasTemperature/DallasTemperature.h";
 
 #ifdef XPL
