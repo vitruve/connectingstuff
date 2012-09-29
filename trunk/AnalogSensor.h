@@ -18,22 +18,24 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
+#ifndef AnalogSensor_h
+#define AnalogSensor_h
 
-#include "Input.h"
-#include "Output.h"
-#include "HttpServer.h"
-#include "Kernel.h"
-#include "Timer.h"
-#include "Dimmer.h"
-#include "Module.h"
-#include "Light.h"
-#include "Manager.h"
-#include "1wireManager.h"
+#include "Arduino.h"
 #include "Sensor.h"
-#include "TemperatureSensor.h"
-#include "AnalogSensor.h"
-#include "Teleinfo.h"
 
-#ifdef XPL
-xPL xpl;
+class AnalogSensor : public Sensor
+{
+	public:
+		AnalogSensor();
+		AnalogSensor(int, char *);
+		~AnalogSensor();
+
+		void Action(void*);
+		char* ToJson();
+		void SendStatus();
+
+		void Update();
+};
+
 #endif

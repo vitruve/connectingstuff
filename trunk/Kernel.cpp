@@ -95,10 +95,10 @@ void ConnectingStuff::Debug(int _value)
 
 void ConnectingStuff::Debug(char* _value)
 {
+	Serial.println(_value);
+
 #ifdef LCD
 	debugTimer = millis();
-
-	Serial.println(_value);
 	ConnectingStuff::PrintLCD(3,0,_value);
 
 
