@@ -26,6 +26,24 @@
 	extern xPL xpl;
 #endif
 
+OnOff::OnOff()
+{
+	m_type = ONOFFM;
+}
+
+OnOff::OnOff(uint8_t _card, uint8_t _io, char* _name)
+{
+	m_output.Init(_card,  _io);
+	m_type = ONOFFM;
+	m_iID = m_output.GetID();
+	strcpy(m_name, _name);
+}
+
+OnOff::~OnOff()
+{
+
+}
+
 Light::Light()
 {
 	m_type = LIGHT;

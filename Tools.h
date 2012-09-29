@@ -18,45 +18,11 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
-
-#ifndef OnewireManager_h
-#define OnewireManager_h
-
-#include "Kernel.h"
-
-#ifdef ONEWIRE
+#ifndef tools_h
+#define tools_h
 
 #include "Arduino.h"
-#include "Timer.h"
-#include "TemperatureSensor.h"
 
-#include "../OneWire/OneWire.h"
-#include "../DallasTemperature/DallasTemperature.h";
+extern char *ftoa(char *a, double f, int precision);
 
-#define ONE_WIRE_BUS 22
-#define TEMPERATURE_PRECISION 12
-#define GET_TEMP_TIME 60000
-
-class OnewireManager
-{
-	protected:
-		OneWire* oneWire;
-		DallasTemperature* sensors;
-
-		Timer m_refreshTimer;
-		uint8_t m_iNbDevice;
-
-		TemperatureSensor** m_sensorList;
-
-		void printAddress(DeviceAddress);
-
-	public:
-		OnewireManager();
-		~OnewireManager();
-
-		void Init();
-		void Update();
-};
-
-#endif
 #endif

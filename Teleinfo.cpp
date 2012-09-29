@@ -80,7 +80,7 @@ char* Teleinfo::ToJson()
 
 void Teleinfo::SendStatus()
 {
-#ifdef XPL
+/*#ifdef XPL
 	xPL_Message msg;
 
 	msg.hop = 1;
@@ -101,7 +101,7 @@ void Teleinfo::SendStatus()
 	msg.AddCommand("IINST",m_IINST);
 
 	xpl.SendMessage(&msg);
-#endif
+#endif*/
 }
 
 void Teleinfo::SetCompteurC(float _C)

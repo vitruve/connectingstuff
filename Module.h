@@ -25,7 +25,7 @@
 #include "Arduino.h"
 #include "Timer.h"
 
-enum Type {SWITCH = 0, LIGHT = 1, DIMMER = 2};
+enum Type {SWITCH = 0, LIGHT = 1, DIMMER = 2, ONOFFM = 3};
 
 class Module
 {

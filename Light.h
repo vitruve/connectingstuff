@@ -56,4 +56,12 @@ class Light : public Module
 		void Toogle();
 };
 
+class OnOff : public Light
+{
+	public:
+		OnOff();
+		OnOff(uint8_t, uint8_t, char*); // carte, sortie
+		~OnOff();
+};
+
 #endif
