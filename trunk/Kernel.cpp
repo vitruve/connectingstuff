@@ -133,9 +133,9 @@ void ConnectingStuff::DebugShowTime()
 
 //////////////////////////////////////////////////////////////////////////////////////////////
 #ifdef ETH
-void EthernetConf::Init(uint8_t* _mac, uint8_t* _ip, uint8_t* _gwip, uint8_t* _broadcastAddr)
+void EthernetConf::Init(uint8_t* _mac, uint8_t* _ip, uint8_t* _gwip, uint8_t* _broadcastAddr, uint8_t _csPin)
 {
-	if (ether.begin(sizeof Ethernet::buffer, _mac) == 0)
+	if (ether.begin(sizeof Ethernet::buffer, _mac, _csPin) == 0)
 	{
 	    Serial.println( "Failed to access Ethernet controller");
 	    ConnectingStuff::SoftReset();

@@ -68,7 +68,7 @@ class EthernetConf
 {
 	public:
 
-	static void Init(uint8_t*, uint8_t*, uint8_t*, uint8_t*);
+	static void Init(uint8_t*, uint8_t*, uint8_t*, uint8_t*, uint8_t _csPin =8);
 	static uint8_t* GetBroadcastAddr();
 };
 #endif
