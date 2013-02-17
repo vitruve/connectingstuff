@@ -171,7 +171,7 @@ void Switch::Update()
 				}
 			}
 
-			//m_iNbClic = 0;
+			m_iNbClic = 0;
 		}
 
 		// L'interrupteur est en position appuyé
