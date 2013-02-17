@@ -47,7 +47,7 @@ void Switch::Init(int _io, char* _name, int _maxModuleToManage, int _longPressDe
 
 	m_type = SWITCH;
 	m_iID = ConnectingStuff::GetCARDID()*100 + _io;
-	memcpy(m_name, _name, 16);
+	memcpy(m_name, _name, 8);
 
 	m_iNbClic = 0;
 	m_bLongPress = false;
