@@ -40,6 +40,8 @@ void Input::Init(int _io, bool _deboune)
 	m_bDebounceInput = _deboune;
 
 	pinMode(m_iio, INPUT);		// configuration de l'io en Entrée
+   SetInternalPullupResistor();
+   
 	m_iLastState = m_iState = HIGH;
 	Read();
 }
