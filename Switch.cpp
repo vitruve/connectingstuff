@@ -52,7 +52,7 @@ void Switch::Init(int _io, char* _name, int _maxModuleToManage, int _longPressDe
 	m_iNbClic = 0;
 	m_bLongPress = false;
 
-	m_Input.SetInternalPullupResistor();
+	//m_Input.SetInternalPullupResistor();
 
 	m_oAttachedModule = (ConfigModule*)malloc ( _maxModuleToManage * sizeof(ConfigModule) );
 
