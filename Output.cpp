@@ -64,7 +64,7 @@ void Output::Set(uint8_t _state)
 		// Si la sortie est sur cette carte on la met a jour
 		if(ConnectingStuff::GetCARDID() == m_iCard)
 		{
-			if(m_iState == HIGH ||. m_iState == LOW)
+			if(m_iState == HIGH || m_iState == LOW)
 			{
 				digitalWrite(m_iio, m_iState);
 			}
